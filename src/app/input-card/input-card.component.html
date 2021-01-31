@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Add New Flash Card</h1>
+    <form #wordForm="ngForm" (ngSubmit)="saveWord()">
+        <!-- templtes refernce whole refernce -->
+
+        <div style="height: auto; width: 300px;">
+
+            <div class="form-group" [class.has-error]="question.invalid && question.touched">
+                <label for="question" class="control-label">Question</label>
+                <input required type="text" name="que" [(ngModel)]="word.question" class="form-control" id="question" #question="ngModel">
+                <span class="help-block" *ngIf="question.invalid && question.touched" class="alert alert-danger">
+                    Question is required
+                  </span>
+
+
+            </div>
+
+            <div class="form-group" [class.has-error]="answerControl.invalid && answerControl.touched">
+                <label for="answer">Answer</label>
+                <input required type="text" name="ans" [(ngModel)]="word.answer" class="form-control" id="answer" #answerControl="ngModel">
+                <span class="help-block" *ngIf="answerControl.invalid && answerControl.touched">
+                    Answer is required
+                  </span>
+            </div>
+
+        </div>
+
+        <button type="submit" style="margin: 5px;" class="btn btn-primary" [disabled]="wordForm.invalid">Submit</button>
+        <button type="submit" style="margin: 5px;" class="btn btn-primary">Clear</button>
+    </form>
+</div>
+
+<!-- {{wordForm.value | json}} -->
+<app-card-list>
+
+</app-card-list>

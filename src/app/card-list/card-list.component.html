@@ -1,0 +1,140 @@
+<div class="container" class="row">
+
+    <div class="adjust" class="col-sm-3" *ngFor="let word of words" style="margin-top: 10px; position: relative;">
+
+
+        <mat-accordion>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+
+                <!-- <mat-expansion-panel-header *ng [ngClass]="{'green ': !toggle}">
+                    <mat-panel-title> {{word.question}}
+                    </mat-panel-title>
+
+
+                </mat-expansion-panel-header> -->
+
+
+
+                <mat-expansion-panel-header [ngClass]="{'green ': !toggle}">
+                    <mat-panel-title> {{word.question}}
+                    </mat-panel-title>
+
+
+                </mat-expansion-panel-header>
+
+
+                <mat-card-content class="s1" style="overflow-y: auto;">
+                    <p>
+                        {{word.answer}}
+                    </p>
+                </mat-card-content>
+
+                <mat-card-actions>
+
+                    <button mat-icon-button color="primary" (click)="right(word)" style="margin: 10px;" aria-label="Example icon button with a home icon">
+                          <mat-icon>done</mat-icon>
+                          </button>
+
+                    <button mat-icon-button color="primary" style="margin: 10px;" aria-label="Example icon button with a home icon">
+                            <mat-icon>clear</mat-icon>
+                          </button>
+
+                    <button data-toggle="modal" mat-icon-button color="primary" (click)="edit(word)" data-target="#myModal" style="margin: 10px;" aria-label="Example icon button with a home icon">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+
+                    <button mat-icon-button color="primary" (click)="delete(word)" style="margin: 10px;" aria-label="Example icon button with a home icon">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+
+
+
+
+                    <!-- <a data-toggle="modal" (click)="edit(word)" data-target="#myModal"><i class="material-icons" style="color: yellowgreen">edit</i></a> -->
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <h1>Update Flash Card</h1>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                    <!-- pasted form -->
+
+
+                                    <form #wordForm1="ngForm" (ngSubmit)="Update(wordForm1)" class="text-center" style="color: #757575;">
+
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <!-- First name -->
+                                                <div class="md-form">
+
+
+                                                    <input type="text" id="QN" name="question" value="question" [(ngModel)]="_WordService.curruntData.question" class="form-control">
+                                                    <label for="QN">Question</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col">
+                                                <!-- Last name -->
+                                                <div class="md-form">
+
+                                                    <input type="text" id="An" name="answer" [(ngModel)]="_WordService.curruntData.answer" class="form-control">
+                                                    <label for="AN">Answer</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </form>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" (click)="update(_WordService.curruntData)" class="btn btn-default" data-dismiss="modal">Update</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </mat-card-actions>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+
+
+</div>
